@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { AiOutlineProduct } from "react-icons/ai";
+
 
 
 const Footer = () => {
@@ -6,7 +8,13 @@ const Footer = () => {
         <div>
             <div>
                 <footer className="footer footer-center p-10 text-base-content rounded bg-black">
-                    <Link to="/" className=" text-4xl font-extrabold font-playfair-display flex items-center justify-center mr-2 text-white">Product Sphere</Link>
+                    <Link to='/' className=" text-3xl text-[#24A8DB] font-Montserrat font-extrabold flex justify-center space-x-0
+                 ">
+                        <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1" />
+                        <p>Product</p>
+                        <p className="text-[#24A8DB]">Sphere</p>
+                    </Link>
+
 
                     <nav className="grid grid-flow-col gap-4">
                         <Link to='/' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display  hover:bg-transparent text-white     hover:text-[#0057d9]">Home</Link>

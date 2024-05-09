@@ -7,10 +7,14 @@ import Banner from "../Banner/Banner";
 const Home = () => {
     return (
         <div>
-            
-            <Slider></Slider>
+
+            <div className="mt-6">
+                <Slider></Slider>
+            </div>
+            <div className="mt-[50px]">
             <Banner></Banner>
-            
+            </div>
+
         </div>
     );
 };

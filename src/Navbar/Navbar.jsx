@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { AiOutlineProduct } from "react-icons/ai";
 
 const Navbar = () => {
     const navLink = <>
@@ -10,7 +10,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100 w-[60%] mx-auto">
+            <div className="navbar bg-base-100 w-[60%] mx-auto mt-2">
                 <div className="navbar-start">
 
                     <div className="dropdown">
@@ -29,8 +29,12 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <Link to='/' className="btn btn-ghost text-3xl font-Montserrat font-extrabold flex justify-center space-x-0
-                 ">Product<span className="text-[#24A8DB]">Sphere</span></Link>
+                <Link to='/' className=" text-3xl font-Montserrat font-extrabold flex justify-center space-x-0
+                 ">
+                    <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1" />
+                    <p>Product</p>
+                    <p className="text-[#24A8DB]">Sphere</p>
+                </Link>
 
 
                 <div className="navbar-end">
@@ -39,7 +43,7 @@ const Navbar = () => {
                             {navLink}
                         </ul>
                     </div>
-                    <a className="btn">Login</a>
+                    <a className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white">Login</a>
                 </div>
             </div>
         </div>
