@@ -12,6 +12,8 @@ import Home from './Home/Home';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
+import MyQueries from './MyQueries/MyQueries';
+import AddQueries from './AddQueries/AddQueries';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      }
+      ,{
+        path: '/myQueries',
+        element: <MyQueries></MyQueries>
+      }
+      ,{
+        path: '/addQueries',
+        element: <AddQueries></AddQueries>
       }
     ]
   },

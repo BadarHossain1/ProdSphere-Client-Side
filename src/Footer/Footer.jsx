@@ -4,6 +4,15 @@ import { AiOutlineProduct } from "react-icons/ai";
 
 
 const Footer = () => {
+
+
+    const navLink = <>
+
+        <li><Link to='/'>Home</Link></li>
+        <li className=""><Link to='/queries'>Queries</Link></li>
+
+        
+    </>
     return (
         <div>
             <div>
@@ -11,18 +20,16 @@ const Footer = () => {
                     <Link to='/' className=" text-3xl text-[#24A8DB] font-Montserrat font-extrabold flex justify-center space-x-0
                  ">
                         <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1" />
-                        <p>Product</p>
+                        <p>Prod</p>
                         <p className="text-[#24A8DB]">Sphere</p>
                     </Link>
 
 
-                    <nav className="grid grid-flow-col gap-4">
-                        <Link to='/' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display  hover:bg-transparent text-white     hover:text-[#0057d9]">Home</Link>
-                        <Link to='/' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display hover:bg-transparent  text-white   hover:text-[#0057d9]">All Tourist Spot</Link>
-                        <Link to='/' className=" mr-2 p-1 bg-transparent  font-bold font-playfair-display  hover:bg-transparent text-white   hover:text-[#0057d9]">Add Tourist Spot</Link>
-                        <Link to='/' className=" mr-2 p-1 bg-transparent font-bold font-playfair-display  hover:bg-transparent  text-white  hover:text-[#0057d9]">My List</Link>
-
-                    </nav>
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1 text-white">
+                            {navLink}
+                        </ul>
+                    </div>
                     <nav>
                         <div className="grid grid-flow-col gap-4 text-white mb-2">
                             <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>

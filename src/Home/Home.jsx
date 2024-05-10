@@ -3,6 +3,7 @@ import Slider from "../Banner/Slider";
 import Banner from "../Banner/Banner";
 import Stats from "../Stats/Stats";
 import Testimonials from "../Testimonials/Testimonials";
+import Cards from "../Cards/Cards";
 
 
 
@@ -15,6 +16,9 @@ const Home = () => {
             </div>
             <div className="mt-[50px]">
             <Banner></Banner>
+            </div>
+            <div className="mt-[50px]">
+                <Cards></Cards>
             </div>
             <div className="mt-[50px]">
                 <Stats></Stats>
