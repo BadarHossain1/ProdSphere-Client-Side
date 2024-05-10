@@ -1,12 +1,125 @@
+import { useContext } from "react";
 import { AiOutlineProduct } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 
 
 const Register = () => {
 
+    const { CreateUser, UpdateProfile, GoogleLogin } = useContext(AuthContext);
+
+
+
+    //navigate here
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+
+    const notify = (success) => {
+        if (success) {
+            toast.success('User Created Successfully', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+        else {
+            toast.error('Error Creating User', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+
+            });
+
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-    
+
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const photoURL = e.target.photo.value;
+
+        const userInfo = {
+            name, email, password, photoURL
+        }
+        console.log(userInfo);
+
+
+        if (passwordRegex.test(password)) {
+            CreateUser(email, password)
+                .then(res => {
+                    console.log(res.user)
+                    notify(true);
+                    //NAVIGATE HERE AS WELL AND FIX ERROR
+
+
+
+                    UpdateProfile(name, photoURL)
+                        .then(result => {
+                            console.log('user updated', result.user);
+                            // navigate(from)
+                        })
+                        .catch(error => {
+                            console.log('Error while update', error);
+
+
+                        })
+
+                })
+
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        else {
+            toast.error('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+
+
+
+    }
+    const GoogleSignIn = e => {
+        e.preventDefault();
+
+        GoogleLogin()
+            .then(result => {
+                console.log('User Google signed In', result.user);
+                notify(true)
+                // navigate(from)
+
+
+            })
+            .catch(error => {
+                console.log('google error', error);
+                notify(false);
+            })
     }
 
 
@@ -26,7 +139,7 @@ const Register = () => {
                     Welcome To Product Sphere
                 </p>
 
-                <button className="flex w-full btn-ghost items-center justify-center mt-4  transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 ">
+                <button onClick={GoogleSignIn} className="flex w-full btn-ghost items-center justify-center mt-4  transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 ">
                     <div className="px-4 py-2">
                         <svg className="w-6 h-6" viewBox="0 0 40 40">
                             <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#FFC107" />
@@ -75,6 +188,7 @@ const Register = () => {
                         <button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform  rounded-lg focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 bg-gradient-to-r from-cyan-500 to-blue-500">
                             Sign Up
                         </button>
+                        <ToastContainer />
                     </div>
                 </form>
 

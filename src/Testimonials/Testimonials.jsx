@@ -14,7 +14,7 @@ const Testimonials = () => {
                         <div className="p-6 xl:col-span-3">
                             <div className="grid gap-4 md:grid-cols-2">
                                 <div className="grid content-center gap-4">
-                                    <div className="p-6 rounded shadow-md dark:bg-gray-50">
+                                    <div className="p-6 rounded shadow-md ">
                                         <p>This system revolutionized the way we manage product data. It's intuitive, efficient, and has significantly improved our workflow.</p>
                                         <div className="flex items-center mt-4 space-x-4">
                                             <img src="https://source.unsplash.com/50x50/?portrait?1" alt="" className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500" />
@@ -46,7 +46,7 @@ const Testimonials = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="p-6 rounded shadow-md dark:bg-gray-50">
+                                    <div className="p-6 rounded shadow-md ">
                                         <p>I have used several product information systems in the past, but none compare to this one. Its user-friendly, feature-rich, and has exceeded all our expectations.</p>
                                         <div className="flex items-center mt-4 space-x-4">
                                             <img src="https://source.unsplash.com/50x50/?portrait?4" alt="" className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500" />

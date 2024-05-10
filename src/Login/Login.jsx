@@ -1,11 +1,122 @@
 import { AiOutlineProduct } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+
 
 const Login = () => {
+
+    const { user, CreateUser, LoginUser, UpdateProfile, LogoutUser, GoogleLogin, GithubLogin, loading, setLoading, } = useContext(AuthContext)
+
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+
+    const notify = (success) => {
+        if (success) {
+            toast.success('Login Completed. Welcome', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+        else {
+            toast.error('Error Loggin In', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+
+            });
+
+        }
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+
+        const userInfo = {
+            email, password
+        }
+
+        console.log(userInfo)
+
+
+        if (passwordRegex.test(password)) {
+            LoginUser(email, password)
+                .then(res => {
+                    console.log(res.user)
+                    console.log('User logged in')
+                    notify(true);
+                    // navigate(location?.state || '/')
+
+
+
+
+                })
+
+                .catch(error => {
+                    console.log(error);
+                    notify(false);
+                })
+        }
+        else {
+            toast.error('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+
+
+
+    }
+
+    const GoogleSignIn = e => {
+        e.preventDefault();
+
+        GoogleLogin()
+            .then(result => {
+                console.log('User Google logged In', result.user);
+                setLoading(false);
+                notify(true)
+                // navigate(location?.state || '/')
+
+
+            })
+            .catch(error => {
+                console.log('google login error', error);
+                notify(false)
+            })
+    }
     return (
         <div className="flex w-full max-w-sm mx-auto overflow-hidden t rounded-lg shadow-lg lg:max-w-4xl mt-6 mb-10">
-            
+
 
             <div className="w-full px-6 py-8 md:px-8 lg:w-1/2  mx-auto">
                 <div className="flex justify-center mx-auto">
@@ -16,7 +127,7 @@ const Login = () => {
                     Welcome Back
                 </p>
 
-                <button  className="flex  w-full items-center justify-center mt-4  transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 ">
+                <button onClick={GoogleSignIn} className="flex  w-full items-center justify-center mt-4  transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 ">
                     <div className="px-4 py-2">
                         <svg className="w-6 h-6" viewBox="0 0 40 40">
                             <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#FFC107" />
@@ -37,8 +148,8 @@ const Login = () => {
                     <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
                 </div>
 
-                <form className="text-center ">
-                    
+                <form onSubmit={handleSubmit} className="text-center ">
+
                     <div className="mt-4">
                         <label className="block mb-2 text-sm font-medium " >Email Address</label>
                         <input type="email" placeholder="Email" name="email" className="input input-bordered input-info  w-5/6" />
@@ -57,6 +168,7 @@ const Login = () => {
                         <button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform  rounded-lg focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 bg-gradient-to-r from-cyan-500 to-blue-500">
                             Sign In
                         </button>
+                        <ToastContainer />
                     </div>
                 </form>
 
