@@ -6,9 +6,8 @@ const ErrorPage = () => {
         <section className="bg-white ">
             <div className="container flex items-center min-h-screen px-6 py-12 mx-auto">
                 <div className="flex flex-col items-center max-w-sm mx-auto text-center">
-                    <p className="p-3 text-sm font-medium text-blue-500 rounded-full  bg-blue-50 ">
-                       404
-                    </p>
+                   
+                    <a href="https://ibb.co/5B5WK6K"><img src="https://i.ibb.co/Chn5PzP/404.jpg" alt="404" border="0" /></a>
                     <h1 className=" text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">Page not found</h1>
                     <p className="mt-4 text-gray-500 dark:text-gray-400">The page you are looking for doesnt exist. Here are some helpful links:</p>
 

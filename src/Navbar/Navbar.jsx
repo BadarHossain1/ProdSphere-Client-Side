@@ -5,12 +5,13 @@ const Navbar = () => {
     const navLink = <>
         <li><Link to='/'>Home</Link></li>
         <li> <Link to='/'>Queries</Link></li>
+        <li> <Link to='/register'>Register</Link></li>
 
     </>
 
     return (
         <div>
-            <div className="navbar bg-base-100 w-[60%] mx-auto mt-2">
+            <div className="navbar bg-base-100 w-full mx-auto mt-2">
                 <div className="navbar-start">
 
                     <div className="dropdown">
@@ -29,7 +30,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <Link to='/' className=" text-3xl font-Montserrat font-extrabold flex justify-center space-x-0
+                <Link to='/' className=" text-2xl md:text-3xl font-Montserrat font-extrabold flex justify-center space-x-0
                  ">
                     <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1" />
                     <p>Product</p>
@@ -40,10 +41,11 @@ const Navbar = () => {
                 <div className="navbar-end">
                     <div className="navbar-center  hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
-                            {navLink}
+                            
                         </ul>
                     </div>
-                    <a className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white">Login</a>
+                    <Link to='/register' className="btn  bg-gradient-to-r from-cyan-500 to-blue-500 text-white mr-2">Register</Link>
+                    <Link to='/login' className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white">Login</Link>
                 </div>
             </div>
         </div>
