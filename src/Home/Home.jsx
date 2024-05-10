@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <div>
 
-            <div className="mt-4">
+            <div className="">
                 <Slider></Slider>
             </div>
             <div className="mt-[50px]">
