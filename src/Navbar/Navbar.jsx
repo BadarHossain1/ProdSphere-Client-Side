@@ -46,7 +46,7 @@ const Navbar = () => {
 
     const hiddenNavLink = <>
         <li><Link to='/'>Home</Link></li>
-        <li> <Link to='/'>Queries</Link></li>
+        <li> <Link to='/queries'>Queries</Link></li>
         <li> <Link to='/register'>Register</Link></li>
 
         <label className="cursor-pointer grid place-items-center">

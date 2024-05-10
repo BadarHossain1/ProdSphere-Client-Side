@@ -31,9 +31,11 @@ const AddQueries = () => {
         const name = user?.displayName;
         const photoURL = user?.photoURL;
         const dateTime = currentDateTime;
+        const recommendationCount = "01";
+
 
         const queryInfo = {
-            ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, email, name, photoURL, dateTime
+            ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, recommendationCount,  email, name, photoURL, dateTime
         }
         console.log(queryInfo);
 

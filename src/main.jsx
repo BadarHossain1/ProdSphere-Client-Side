@@ -14,6 +14,7 @@ import Register from './Register/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
 import MyQueries from './MyQueries/MyQueries';
 import AddQueries from './AddQueries/AddQueries';
+import Queries from './Queries/Queries';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       ,{
         path: '/addQueries',
         element: <AddQueries></AddQueries>
+      },
+      {
+        path: '/queries',
+        element: <Queries></Queries>
       }
     ]
   },
