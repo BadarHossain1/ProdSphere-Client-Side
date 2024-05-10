@@ -36,7 +36,7 @@ const Slider = () => {
 
 
                 <div className="hero-overlay bg-opacity-50 rounded-lg"></div>
-                <div className="z-0 flex w-[90%] text-center space-y-6 gap-4 p-2 rounded-lg" >
+                <div className="z-0 flex w-[95%] text-center space-y-6 gap-4 p-2 rounded-lg" >
 
                     <div className="">
 
