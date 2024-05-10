@@ -19,7 +19,7 @@ const Home = () => {
             <div className="mt-[50px]">
                 <Stats></Stats>
             </div>
-            <div className="mt-[50px]">
+            <div className="">
                 <Testimonials></Testimonials>
             </div>
 
