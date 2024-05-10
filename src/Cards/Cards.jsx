@@ -1,19 +1,43 @@
+import { useEffect, useState } from "react";
+import Card from "./Card";
 
 
 const Cards = () => {
+
+    const [queries, setQueries] = useState([]);
+
+    const reverseData = () => {
+        setQueries(prevData => [...prevData].reverse());
+    };
+
+    useEffect(() => {
+        fetch('http://localhost:5000/AddQuery')
+            .then(res => res.json())
+            .then(data => setQueries(data))
+    }, [])
+
+
+
+
     return (
-        <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
-            <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{backgroundImage: "url(https://i.ibb.co/k1pWj9W/Toothpaste.jpg)"}}></div>
+        <div>
 
-            <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
-                <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">Nike Revolt</h3>
+            <span className="flex items-center mt-6 mb-6">
+                <span className="h-px flex-1 bg-black"></span>
+                <span className="shrink-0 px-6">            <p className="text-4xl font-extrabold">Recent <span className="text-[#24A8DB] mt-4 text-center">Queries</span></p>
+                </span>
+                <span className="h-px flex-1 bg-black"></span>
+            </span>
 
-                <div className="flex flex-col items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
-                    <span className="font-bold text-gray-800 dark:text-gray-200">$129</span>
-                    {/* <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Add to cart</button> */}
-
-                </div>
+            {/* here is card */}
+            <button onClick={reverseData}>reverse the shit</button>
+            <div className="grid grid-cols-1 lg:grid-cols-3 max-w-[1170px] mx-auto">
+                {
+                    queries.slice(0, 6).map(query => <Card key={query._id} query={query}></Card>)
+                }
             </div>
+
+
         </div>
     );
 };

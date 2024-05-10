@@ -52,7 +52,7 @@ const MyQueries = () => {
 
             <span className="flex items-center mt-6 mb-6">
                 <span className="h-px flex-1 bg-black"></span>
-                <span className="shrink-0 px-6">            <p className="text-3xl">My <span className="text-[#24A8DB] mt-4 text-center">Queries</span></p>
+                <span className="shrink-0 px-6">            <p className="text-3xl font-extrabold">My <span className="text-[#24A8DB] mt-4 text-center">Queries</span></p>
 </span>
                 <span className="h-px flex-1 bg-black"></span>
             </span>
