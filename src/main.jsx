@@ -19,6 +19,7 @@ import Recommend from './Queries/Recommend';
 import MyRecommendations from './MyRecommendations/MyRecommendations';
 import RecommendationsForMe from './RecommendationsForMe/RecommendationsForMe';
 import UpdateQuery from './MyQueries/UpdateQuery';
+import ViewDetails from './ViewDetails/ViewDetails';
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,11 @@ const router = createBrowserRouter([
         path: '/update/:id',
         element: <UpdateQuery></UpdateQuery>,
         
+      }
+      ,{
+        path: '/viewDetails/:id',
+        element: <ViewDetails></ViewDetails>
+
       }
     ]
   },

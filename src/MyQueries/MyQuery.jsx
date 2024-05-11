@@ -48,7 +48,7 @@ const MyQuery = ({ query }) => {
 
 
                         <div className="flex justify-start mt-4 text-center">
-                            <Link className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">View Details</Link>
+                            <Link to={`/viewDetails/${_id}`} className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">View Details</Link>
                             <Link to={`/update/${_id}`} className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">Update</Link>
                             <button onClick={() => handleDelete(_id)} className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">Delete</button>
                         </div>
