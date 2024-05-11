@@ -1,8 +1,30 @@
+import { set } from "firebase/database";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
 const MyQuery = ({ query }) => {
+
+
+
     const { ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, email, name, photoURL, dateTime, _id } = query;
+
+
+
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/AddQuery/id/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+
+
+
+
+            }
+            )
+    }
 
     return (
         <div>
@@ -28,7 +50,7 @@ const MyQuery = ({ query }) => {
                         <div className="flex justify-start mt-4 text-center">
                             <Link className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">View Details</Link>
                             <Link to={`/update/${_id}`} className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">Update</Link>
-                            <Link className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">Delete</Link>
+                            <button onClick={() => handleDelete(_id)} className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">Delete</button>
                         </div>
                     </div>
                 </div>

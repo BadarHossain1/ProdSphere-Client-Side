@@ -52,7 +52,7 @@ const Navbar = () => {
         <li><Link to='/myRecommendations'>My Recommendations</Link></li>
         {
             user ?
-                <li className=""><Link to='/queries' className="text-center">Recommendations For Me</Link></li> : null
+                <li className=""><Link to='/recommendationsForMe' className="text-center">Recommendations For Me</Link></li> : null
         }
 
         <label className="cursor-pointer grid place-items-center">
@@ -70,7 +70,7 @@ const Navbar = () => {
 
         {
             user ?
-                <li className=""><Link to='/queries' className="text-center">Recommendations For Me</Link></li> : null
+                <li className=""><Link to='/recommendationsForMe' className="text-center">Recommendations For Me</Link></li> : null
         }
 
     </>
