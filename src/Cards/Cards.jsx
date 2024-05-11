@@ -6,14 +6,18 @@ const Cards = () => {
 
     const [queries, setQueries] = useState([]);
 
-    const reverseData = () => {
-        setQueries(prevData => [...prevData].reverse());
-    };
+    // const reverseData = () => {
+    //     setQueries(prevData => [...prevData].reverse());
+    // };
 
     useEffect(() => {
         fetch('http://localhost:5000/AddQuery')
             .then(res => res.json())
-            .then(data => setQueries(data))
+            .then(data => {
+
+                setQueries(data)
+                setQueries(prevData => [...prevData].reverse());
+            })
     }, [])
 
 
@@ -30,7 +34,7 @@ const Cards = () => {
             </span>
 
             {/* here is card */}
-            <button onClick={reverseData}>reverse the shit</button>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 max-w-[1170px] mx-auto">
                 {
                     queries.slice(0, 6).map(query => <Card key={query._id} query={query}></Card>)
