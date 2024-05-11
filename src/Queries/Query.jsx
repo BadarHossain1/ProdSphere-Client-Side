@@ -26,7 +26,7 @@ const Query = ({ query }) => {
 
 
                         <div className="flex justify-start mt-4 text-center">
-                            <Link className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">Recommended</Link>
+                            <Link to={`/query/${_id}`} className="btn w-15 md:w-28 bg-gradient-to-r from-cyan-500 to-blue-500  text-[#fff] flex-grow">Recommend</Link>
 
                         </div>
                     </div>

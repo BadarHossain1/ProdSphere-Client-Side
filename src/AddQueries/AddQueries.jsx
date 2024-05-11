@@ -31,7 +31,7 @@ const AddQueries = () => {
         const name = user?.displayName;
         const photoURL = user?.photoURL;
         const dateTime = currentDateTime;
-        const recommendationCount = "01";
+        const recommendationCount = "1";
 
 
         const queryInfo = {

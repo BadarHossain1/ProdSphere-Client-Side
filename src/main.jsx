@@ -15,6 +15,8 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import MyQueries from './MyQueries/MyQueries';
 import AddQueries from './AddQueries/AddQueries';
 import Queries from './Queries/Queries';
+import Recommend from './Queries/Recommend';
+import MyRecommendations from './MyRecommendations/MyRecommendations';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,15 @@ const router = createBrowserRouter([
       {
         path: '/queries',
         element: <Queries></Queries>
+      }
+      ,{
+        path: '/query/:id',
+        element: <Recommend></Recommend>,
+        loader: ({params}) => fetch(`http://localhost:5000/query/${params.id}`),
+      }
+      ,{
+        path: '/myRecommendations',
+        element: <MyRecommendations></MyRecommendations>
       }
     ]
   },
