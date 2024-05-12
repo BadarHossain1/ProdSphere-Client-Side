@@ -13,7 +13,7 @@ const MyQuery = ({ query }) => {
 
 
     const handleDelete = (id) => {
-        // fetch(`http://localhost:5000/AddQuery/id/${id}`, {
+        // fetch(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`, {
         //     method: 'DELETE',
         // })
         //     .then(res => res.json())
@@ -26,7 +26,7 @@ const MyQuery = ({ query }) => {
         //     }
         //     )
 
-        axios.delete(`http://localhost:5000/AddQuery/id/${id}`)
+        axios.delete(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`)
             .then(res => res.data)
             .then(result => {
                 console.log(result);

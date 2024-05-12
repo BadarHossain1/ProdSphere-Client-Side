@@ -6,7 +6,7 @@ const MyRecommendations = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/myRecommendations/${user?.email}`)
+        fetch(`https://product-sphere-server.vercel.app/myRecommendations/${user?.email}`)
             .then(res => res.json())
             .then(data => {
 
@@ -26,7 +26,7 @@ const MyRecommendations = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/myRecommendations/${id}`, {
+                fetch(`https://product-sphere-server.vercel.app/myRecommendations/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => {

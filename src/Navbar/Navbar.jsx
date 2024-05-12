@@ -49,11 +49,11 @@ const Navbar = () => {
 
 
     const hiddenNavLink = <>
-        <li><Link to='/' className="hover:underline bg-transparent hover:text-[#24A8DB]">Home</Link></li>
-        <li> <Link to='/queries' className="hover:underline bg-transparent hover:text-[#24A8DB]">Queries</Link></li>
-        <li> <Link to='/register' className="hover:underline bg-transparent hover:text-[#24A8DB]">Register</Link></li>
-        <li><Link to='/myQueries' className="hover:underline bg-transparent hover:text-[#24A8DB]">My Queries</Link></li>
-        <li><Link to='/myRecommendations' className="hover:underline bg-transparent hover:text-[#24A8DB]">My Recommendations</Link></li>
+        <li><Link to='/' className="hover:underline bg-transparent hover:text-[#24A8DB]  btn-ghost">Home</Link></li>
+        <li> <Link to='/queries' className="hover:underline bg-transparent hover:text-[#24A8DB] btn-ghost">Queries</Link></li>
+        <li> <Link to='/register' className="hover:underline bg-transparent hover:text-[#24A8DB] btn-ghost">Register</Link></li>
+        <li><Link to='/myQueries' className="hover:underline bg-transparent hover:text-[#24A8DB] btn-ghost">My Queries</Link></li>
+        <li><Link to='/myRecommendations' className="hover:underline bg-transparent hover:text-[#24A8DB] btn-ghost">My Recommendations</Link></li>
         {
             user ?
                 <li className=""><Link to='/recommendationsForMe' className="hover:underline text-center bg-transparent hover:text-[#24A8DB]">Recommendations For Me</Link></li> : null

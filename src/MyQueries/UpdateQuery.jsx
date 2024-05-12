@@ -10,7 +10,7 @@ const UpdateQuery = () => {
     const { user } = useContext(AuthContext);
     const [currentDateTime, setCurrentDateTime] = useState("");
 
-    const {id} = useParams();
+    const { id } = useParams();
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -34,7 +34,7 @@ const UpdateQuery = () => {
         const name = user?.displayName;
         const photoURL = user?.photoURL;
         const dateTime = currentDateTime;
-        
+
 
 
         const queryInfo = {
@@ -43,7 +43,7 @@ const UpdateQuery = () => {
         console.log(queryInfo);
 
 
-        fetch(`http://localhost:5000/AddQuery/id/${id}`, {
+        fetch(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

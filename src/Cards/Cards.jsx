@@ -12,8 +12,8 @@ const Cards = () => {
     // };
 
     useEffect(() => {
-        // fetch('http://localhost:5000/AddQuery')
-        axios.get('http://localhost:5000/AddQuery')
+        // fetch('https://product-sphere-server.vercel.app/AddQuery')
+        axios.get('https://product-sphere-server.vercel.app/AddQuery')
             .then(res => res.data)
             .then(data => {
 

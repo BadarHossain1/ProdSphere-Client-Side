@@ -36,20 +36,20 @@ const AddQueries = () => {
 
 
         const queryInfo = {
-            ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, recommendationCount,  email, name, photoURL, dateTime
+            ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, recommendationCount, email, name, photoURL, dateTime
         }
         console.log(queryInfo);
 
 
-        // axios.post('http://localhost:5000/AddQuery', {
+        // axios.post('https://product-sphere-server.vercel.app/AddQuery', {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json'
         //     },
         //     body: JSON.stringify(queryInfo)
         // }
-        axios.post('http://localhost:5000/AddQuery', queryInfo)
-        
+        axios.post('https://product-sphere-server.vercel.app/AddQuery', queryInfo)
+
             .then(response => {
                 console.log(response)
                 toast.success('Query Added', {

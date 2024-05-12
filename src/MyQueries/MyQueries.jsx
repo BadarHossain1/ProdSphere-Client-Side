@@ -13,8 +13,8 @@ const MyQueries = () => {
 
 
     useEffect(() => {
-        // fetch(`http://localhost:5000/AddQuery/${user?.email}`)
-        axios.get(`http://localhost:5000/AddQuery/${user?.email}`, {withCredentials: true})
+        // fetch(`https://product-sphere-server.vercel.app/AddQuery/${user?.email}`)
+        axios.get(`https://product-sphere-server.vercel.app/AddQuery/${user?.email}`, { withCredentials: true })
             .then(response => response.data)
             .then(data => setQueries(data))
             .catch(err => console.log(err))
@@ -55,7 +55,7 @@ const MyQueries = () => {
             <span className="flex items-center mt-6 mb-6">
                 <span className="h-px flex-1 bg-black"></span>
                 <span className="shrink-0 px-6">            <p className="text-3xl font-extrabold">My <span className="text-[#24A8DB] mt-4 text-center">Queries</span></p>
-</span>
+                </span>
                 <span className="h-px flex-1 bg-black"></span>
             </span>
 

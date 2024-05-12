@@ -11,7 +11,7 @@ const ViewDetails = () => {
     const { ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, email, name, photoURL, dateTime } = details;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/query/${id}`)
+        fetch(`https://product-sphere-server.vercel.app/query/${id}`)
             .then(res => res.json())
             .then(data => setDetails(data))
             .catch(error => console.log(error))

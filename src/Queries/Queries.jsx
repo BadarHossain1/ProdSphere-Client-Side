@@ -18,7 +18,7 @@ const Queries = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/AddQuery`)
+        fetch(`https://product-sphere-server.vercel.app/AddQuery`)
             .then(response => response.json())
             .then(data => {
                 setQueries(data)
@@ -32,7 +32,7 @@ const Queries = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         const search = e.target.Search.value;
-        
+
 
         const filteredData = queries.filter(query => query.ProductName.toLowerCase().includes(search.toLowerCase()));
         setQueries(filteredData);

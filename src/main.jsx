@@ -41,11 +41,11 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       }
-      ,{
+      , {
         path: '/myQueries',
         element: <MyQueries></MyQueries>
       }
-      ,{
+      , {
         path: '/addQueries',
         element: <PrivateRoute><AddQueries></AddQueries></PrivateRoute>
       },
@@ -53,12 +53,12 @@ const router = createBrowserRouter([
         path: '/queries',
         element: <Queries></Queries>
       }
-      ,{
+      , {
         path: '/query/:id',
         element: <PrivateRoute><Recommend></Recommend></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/query/${params.id}`),
+        loader: ({ params }) => fetch(`https://product-sphere-server.vercel.app/query/${params.id}`),
       }
-      ,{
+      , {
         path: '/myRecommendations',
         element: <PrivateRoute><MyRecommendations></MyRecommendations></PrivateRoute>
       },
@@ -69,9 +69,9 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element: <UpdateQuery></UpdateQuery>,
-        
+
       }
-      ,{
+      , {
         path: '/viewDetails/:id',
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>
 

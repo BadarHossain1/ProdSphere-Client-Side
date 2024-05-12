@@ -7,8 +7,8 @@ const RecommendationsForMe = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
     useEffect(() => {
-        // fetch(`http://localhost:5000/recommendationsForMe/${user?.email}`)
-        axios.get(`http://localhost:5000/recommendationsForMe/${user?.email}`, {withCredentials: true})
+        // fetch(`https://product-sphere-server.vercel.app/recommendationsForMe/${user?.email}`)
+        axios.get(`https://product-sphere-server.vercel.app/recommendationsForMe/${user?.email}`, { withCredentials: true })
             .then(res => res.data)
             .then(data => {
 
@@ -16,7 +16,7 @@ const RecommendationsForMe = () => {
             });
     }, [user]);
 
-    
+
     return (
         <div>
             <div className="mb-6">
@@ -25,7 +25,7 @@ const RecommendationsForMe = () => {
                 <hr className="border-1 mt-4 mb-16" />
                 <div className=" ">
 
-                   
+
 
                     <div className="overflow-x-auto">
                         <table className="table">
@@ -55,7 +55,7 @@ const RecommendationsForMe = () => {
                                         <td>{list.RecommenderName}</td>
                                         <td>{list.dateAndTime}</td>
 
-                                        
+
 
                                     </tr>
                                 ))}

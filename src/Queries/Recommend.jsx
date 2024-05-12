@@ -21,7 +21,7 @@ const Recommend = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/AddRecommendation/${_id}`)
+        fetch(`https://product-sphere-server.vercel.app/AddRecommendation/${_id}`)
             .then(res => res.json())
             .then(data => setRecommendations(data))
     }, [_id])
@@ -61,7 +61,7 @@ const Recommend = () => {
         console.log(allInfo);
 
 
-        fetch('http://localhost:5000/AddRecommendation', {
+        fetch('https://product-sphere-server.vercel.app/AddRecommendation', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
