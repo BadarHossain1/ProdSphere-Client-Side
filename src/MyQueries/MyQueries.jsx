@@ -14,7 +14,7 @@ const MyQueries = () => {
 
     useEffect(() => {
         // fetch(`http://localhost:5000/AddQuery/${user?.email}`)
-        axios.get(`http://localhost:5000/AddQuery/${user?.email}`)
+        axios.get(`http://localhost:5000/AddQuery/${user?.email}`, {withCredentials: true})
             .then(response => response.data)
             .then(data => setQueries(data))
             .catch(err => console.log(err))
