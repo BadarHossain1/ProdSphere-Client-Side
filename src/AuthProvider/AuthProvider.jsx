@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
                 setLoading(false);
                 // ...
             } else {
-                alert("No user is signed in");
+                setUser(null);
                 setLoading(false);
             }
         });

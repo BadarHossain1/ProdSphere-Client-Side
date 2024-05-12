@@ -20,6 +20,7 @@ import MyRecommendations from './MyRecommendations/MyRecommendations';
 import RecommendationsForMe from './RecommendationsForMe/RecommendationsForMe';
 import UpdateQuery from './MyQueries/UpdateQuery';
 import ViewDetails from './ViewDetails/ViewDetails';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       }
       ,{
         path: '/addQueries',
-        element: <AddQueries></AddQueries>
+        element: <PrivateRoute><AddQueries></AddQueries></PrivateRoute>
       },
       {
         path: '/queries',
@@ -54,16 +55,16 @@ const router = createBrowserRouter([
       }
       ,{
         path: '/query/:id',
-        element: <Recommend></Recommend>,
+        element: <PrivateRoute><Recommend></Recommend></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/query/${params.id}`),
       }
       ,{
         path: '/myRecommendations',
-        element: <MyRecommendations></MyRecommendations>
+        element: <PrivateRoute><MyRecommendations></MyRecommendations></PrivateRoute>
       },
       {
         path: '/recommendationsForMe',
-        element: <RecommendationsForMe></RecommendationsForMe>
+        element: <PrivateRoute><RecommendationsForMe></RecommendationsForMe></PrivateRoute>
       },
       {
         path: '/update/:id',
@@ -72,7 +73,7 @@ const router = createBrowserRouter([
       }
       ,{
         path: '/viewDetails/:id',
-        element: <ViewDetails></ViewDetails>
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>
 
       }
     ]

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import axios from "axios";
 
 
 const Cards = () => {
@@ -11,8 +12,9 @@ const Cards = () => {
     // };
 
     useEffect(() => {
-        fetch('http://localhost:5000/AddQuery')
-            .then(res => res.json())
+        // fetch('http://localhost:5000/AddQuery')
+        axios.get('http://localhost:5000/AddQuery')
+            .then(res => res.data)
             .then(data => {
 
                 setQueries(data)

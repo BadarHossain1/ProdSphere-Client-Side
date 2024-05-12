@@ -1,3 +1,4 @@
+import axios from "axios";
 import { set } from "firebase/database";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -12,16 +13,24 @@ const MyQuery = ({ query }) => {
 
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/AddQuery/id/${id}`, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
+        // fetch(`http://localhost:5000/AddQuery/id/${id}`, {
+        //     method: 'DELETE',
+        // })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         console.log(result);
+
+
+
+
+        //     }
+        //     )
+
+        axios.delete(`http://localhost:5000/AddQuery/id/${id}`)
+            .then(res => res.data)
             .then(result => {
                 console.log(result);
-
-
-
-
+                window.location.reload();
             }
             )
     }

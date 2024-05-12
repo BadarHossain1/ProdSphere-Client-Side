@@ -11,18 +11,19 @@ const Footer = () => {
         <li><Link to='/'>Home</Link></li>
         <li className=""><Link to='/queries'>Queries</Link></li>
 
-        
+
     </>
     return (
         <div>
             <div>
                 <footer className="footer footer-center p-10 text-base-content rounded bg-black">
-                    <Link to='/' className=" text-3xl text-[#24A8DB] font-Montserrat font-extrabold flex justify-center space-x-0
+                    <Link to='/' className=" text-2xl md:text-3xl font-Montserrat font-extrabold flex justify-center space-x-0 
                  ">
-                        <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1" />
-                        <p>Prod</p>
+                        <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1 " />
+                        <p className="text-white">Prod</p>
                         <p className="text-[#24A8DB]">Sphere</p>
                     </Link>
+                    <p className="font-Montserrat w-1/2 text-white ">We are dedicated to providing you with reliable insights into alternative products that promote sustainability, health, and ethical practices. Our mission is to empower consumers to make informed choices by offering comprehensive information on eco-friendly, cruelty-free, and non-toxic alternatives to everyday products. Join us in our journey towards a more conscious and sustainable lifestyle</p>
 
 
                     <div className="navbar-center hidden lg:flex">

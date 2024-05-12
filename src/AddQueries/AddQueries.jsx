@@ -3,6 +3,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
+import axios from "axios";
 
 
 const AddQueries = () => {
@@ -40,14 +41,15 @@ const AddQueries = () => {
         console.log(queryInfo);
 
 
-        fetch('http://localhost:5000/AddQuery', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(queryInfo)
-        }
-        )
+        // axios.post('http://localhost:5000/AddQuery', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(queryInfo)
+        // }
+        axios.post('http://localhost:5000/AddQuery', queryInfo)
+        
             .then(response => {
                 console.log(response)
                 toast.success('Query Added', {

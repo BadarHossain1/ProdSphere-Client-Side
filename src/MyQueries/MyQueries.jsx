@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import MyQuery from "./MyQuery";
+import axios from "axios";
 
 
 const MyQueries = () => {
@@ -12,8 +13,9 @@ const MyQueries = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/AddQuery/${user?.email}`)
-            .then(response => response.json())
+        // fetch(`http://localhost:5000/AddQuery/${user?.email}`)
+        axios.get(`http://localhost:5000/AddQuery/${user?.email}`)
+            .then(response => response.data)
             .then(data => setQueries(data))
             .catch(err => console.log(err))
 

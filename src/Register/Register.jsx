@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AiOutlineProduct } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,11 @@ import { Bounce } from 'react-toastify';
 const Register = () => {
 
     const { CreateUser, UpdateProfile, GoogleLogin } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const from = '/';
+
 
 
 
@@ -68,6 +73,7 @@ const Register = () => {
                     console.log(res.user)
                     notify(true);
                     //NAVIGATE HERE AS WELL AND FIX ERROR
+                    navigate(from)
 
 
 
@@ -75,6 +81,7 @@ const Register = () => {
                         .then(result => {
                             console.log('user updated', result.user);
                             // navigate(from)
+                            navigate(from)
                         })
                         .catch(error => {
                             console.log('Error while update', error);
@@ -112,7 +119,7 @@ const Register = () => {
             .then(result => {
                 console.log('User Google signed In', result.user);
                 notify(true)
-                // navigate(from)
+                 navigate(from)
 
 
             })

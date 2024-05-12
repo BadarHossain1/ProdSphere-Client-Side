@@ -1,16 +1,19 @@
 import { AiOutlineProduct } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 
 
 const Login = () => {
 
     const { user, CreateUser, LoginUser, UpdateProfile, LogoutUser, GoogleLogin, GithubLogin, loading, setLoading, } = useContext(AuthContext)
+
+    const navigate = useNavigate();
 
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -67,7 +70,19 @@ const Login = () => {
                     console.log(res.user)
                     console.log('User logged in')
                     notify(true);
-                    // navigate(location?.state || '/')
+
+                    const user = { email };
+
+                    axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                        .then(res => {
+                            console.log(res.data);
+
+                        })
+
+
+
+
+                    navigate(location?.state || '/')
 
 
 
@@ -105,7 +120,8 @@ const Login = () => {
                 console.log('User Google logged In', result.user);
                 setLoading(false);
                 notify(true)
-                // navigate(location?.state || '/')
+                navigate(location?.state || '/')
+
 
 
             })
