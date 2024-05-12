@@ -3,6 +3,7 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
+import axios from "axios";
 
 const Navbar = () => {
     const { user, LogoutUser, loading } = useContext(AuthContext);
@@ -33,7 +34,10 @@ const Navbar = () => {
         LogoutUser()
             .then(res => {
                 console.log(res)
-                
+                axios.post('http://localhost:5173/logout', user, {
+                    withCredentials:true
+                })
+                .then(res => res.data);
             }
 
 
