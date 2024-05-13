@@ -169,8 +169,8 @@ const Navbar = () => {
                                             <svg className="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                                         </label>
 
-                                        <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-blue-600 tooltip" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName || 'No Name'}>
-                                            <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] hidden md:flex md:h-[35px] " />
+                                        <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] hidden md:flex md:w-[50px] md:h-[50px] flex items-center justify-center border-blue-600 tooltip" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName || 'No Name'}>
+                                            <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px]  md:h-[35px] " />
                                         </div>
                                         <Link to='/login' className=" btn hover:bg-gray-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">Login</Link>
 
