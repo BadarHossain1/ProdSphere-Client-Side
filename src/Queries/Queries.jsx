@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Query from "./Query";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 
 
 const Queries = () => {
@@ -18,8 +19,9 @@ const Queries = () => {
 
 
     useEffect(() => {
-        fetch(`https://product-sphere-server.vercel.app/AddQuery`)
-            .then(response => response.json())
+        // fetch(`https://product-sphere-server.vercel.app/AddQuery`)
+        axios.get(`https://product-sphere-server.vercel.app/AddQuery`, { withCredentials: true })
+            .then(response => response.data)
             .then(data => {
                 setQueries(data)
                 setQueries(prevData => [...prevData].reverse());

@@ -1,13 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 
 const MyRecommendations = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
     useEffect(() => {
-        fetch(`https://product-sphere-server.vercel.app/myRecommendations/${user?.email}`)
-            .then(res => res.json())
+        // fetch(`https://product-sphere-server.vercel.app/myRecommendations/${user?.email}`)
+        axios.get(`https://product-sphere-server.vercel.app/myRecommendations/${user?.email}`, { withCredentials: true })
+
+            .then(res => res.data)
             .then(data => {
 
                 setList(data);
@@ -26,9 +29,10 @@ const MyRecommendations = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://product-sphere-server.vercel.app/myRecommendations/${id}`, {
-                    method: 'DELETE',
-                })
+                // fetch(`https://product-sphere-server.vercel.app/myRecommendations/${id}`, {
+                //     method: 'DELETE',
+                // })
+                axios.delete(`https://product-sphere-server.vercel.app/myRecommendations/${id}`, {withCredentials: true})
                     .then(res => {
                         console.log(res);
 

@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const UpdateQuery = () => {
     const { user } = useContext(AuthContext);
@@ -43,16 +44,17 @@ const UpdateQuery = () => {
         console.log(queryInfo);
 
 
-        fetch(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(queryInfo)
-        }
-        )
+        // fetch(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(queryInfo)
+        // }
+        axios.patch(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`, queryInfo, { withCredentials: true })
+        
             .then(response => {
-                console.log(response)
+                console.log(response.data);
                 toast.success('Query Updated', {
                     position: "top-center",
                     autoClose: 5000,

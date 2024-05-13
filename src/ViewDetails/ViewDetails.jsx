@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -11,7 +12,8 @@ const ViewDetails = () => {
     const { ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, email, name, photoURL, dateTime } = details;
 
     useEffect(() => {
-        fetch(`https://product-sphere-server.vercel.app/query/${id}`)
+        // fetch(`https://product-sphere-server.vercel.app/query/${id}`)
+        axios.get(`https://product-sphere-server.vercel.app/query/${id}`, {withCredentials: true})
             .then(res => res.json())
             .then(data => setDetails(data))
             .catch(error => console.log(error))
