@@ -8,20 +8,24 @@ const ViewDetails = () => {
     const { id } = useParams();
 
     const [details, setDetails] = useState({});
+    const [loading, setLoading] = useState(true);
 
     const { ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, email, name, photoURL, dateTime } = details;
 
     useEffect(() => {
         // fetch(`https://product-sphere-server.vercel.app/query/${id}`)
-        axios.get(`https://product-sphere-server.vercel.app/query/${id}`, {withCredentials: true})
-            .then(res => res.json())
-            .then(data => setDetails(data))
+        axios.get(`https://product-sphere-server.vercel.app/query/${id}`, { withCredentials: true })
+            .then(res => res.data)
+            .then(data => {
+                setDetails(data)
+                setLoading(false);
+            })
             .catch(error => console.log(error))
 
     }, [id])
     return (
         <div>
-            <section>
+            {loading ? <div className="w-full h-full flex justify-center items-center"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div> : ( <section>
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 ">
                     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 ">
                         <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
@@ -61,7 +65,8 @@ const ViewDetails = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> )
+            }
         </div>
     );
 };

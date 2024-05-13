@@ -26,7 +26,7 @@ const MyQuery = ({ query }) => {
         //     }
         //     )
 
-        axios.delete(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`)
+        axios.delete(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`, { withCredentials: true })
             .then(res => res.data)
             .then(result => {
                 console.log(result);

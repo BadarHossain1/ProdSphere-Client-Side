@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
+import axios from "axios";
 
 
 const Recommend = () => {
@@ -18,12 +19,17 @@ const Recommend = () => {
     const { ProductName, ProductBrand, ProductImageURL, QueryTitle, BoycottingReasonDetails, email, name, photoURL, dateTime, _id, recommendationCount } = data;
 
     const [recommendations, setRecommendations] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
-        fetch(`https://product-sphere-server.vercel.app/AddRecommendation/${_id}`)
-            .then(res => res.json())
-            .then(data => setRecommendations(data))
+        // fetch(`https://product-sphere-server.vercel.app/AddRecommendation/${_id}`)
+        axios.get(`https://product-sphere-server.vercel.app/AddRecommendation/${_id}`, { withCredentials: true })
+            .then(res => res.data)
+            .then(data => {
+                setRecommendations(data)
+                setLoading(false)
+            })
     }, [_id])
 
 
@@ -61,14 +67,15 @@ const Recommend = () => {
         console.log(allInfo);
 
 
-        fetch('https://product-sphere-server.vercel.app/AddRecommendation', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(allInfo)
+        // fetch('https://product-sphere-server.vercel.app/AddRecommendation', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(allInfo)
 
-        })
+        // })
+        axios.post('https://product-sphere-server.vercel.app/AddRecommendation', allInfo, { withCredentials: true })
             .then(response => {
                 console.log(response)
                 toast.success('Recommendation Added', {
@@ -159,7 +166,7 @@ const Recommend = () => {
             <div className="mt-10 pb-10">
                 <span className="flex items-center mt-6 mb-6 font-Montserrat">
                     <span className="h-px flex-1 bg-black"></span>
-                    <span className="shrink-0 px-6">            <p className="text-4xl  font-extrabold"> <span className="text-[#24A8DB] mt-4 text-center">Add Recommendation</span></p>
+                    <span className="shrink-0 px-6">            <p className="text-2xl md:text-4xl  font-extrabold"> <span className="text-[#24A8DB] mt-4 text-center">Add Recommendation</span></p>
                     </span>
                     <span className="h-px flex-1 bg-black"></span>
                 </span>
@@ -188,7 +195,7 @@ const Recommend = () => {
                     </div>
                     <div className="form-control mt-6 w-2/4 mx-auto">
                         <button className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white">Add Recommendation</button>
-                        {/* Toast */}
+                        <ToastContainer />
                     </div>
                 </form>
 
@@ -202,60 +209,65 @@ const Recommend = () => {
             {/* ALL RECOMMENDATIONS FOR THAT PARTICULAR QUERY */}
             <span className="flex items-center mt-10 mb-6 font-Montserrat ">
                 <span className="h-px flex-1 bg-black"></span>
-                <span className="shrink-0 px-6">            <p className="text-4xl  font-extrabold"> <span className="text-[#24A8DB] mt-4 text-center"> Recommendations</span></p>
+                <span className="shrink-0 px-6">            <p className="text-2xl md:text-4xl  font-extrabold"> <span className="text-[#24A8DB] mt-4 text-center"> Recommendations</span></p>
                 </span>
                 <span className="h-px flex-1 bg-black"></span>
             </span>
 
             {
-                recommendations.map(recommendation => <article key={recommendation.id} className="flex bg-white transition hover:shadow-xl mb-4">
-                    <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
-                        <time
+                loading ? (<div className="w-full h-full flex justify-center items-center"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div>) : (
+                    recommendations.length < 1 ? <p className="text-2xl text-center text-teal-400">No Recommendations for this Particular Query</p> : recommendations.map(recommendation => <article key={recommendation.id} className="flex bg-white transition hover:shadow-xl mb-4">
+                        <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
+                            <time
 
-                            className="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
-                        >
-                            <span>Date:</span>
-                            <span className="w-px flex-1 bg-gray-900/10"></span>
-                            <span>{recommendation.dateAndTime}</span>
-                        </time>
-                    </div>
-
-                    <div className="hidden sm:block sm:basis-56">
-                        <img
-                            alt=""
-                            src={recommendation.Image}
-                            className="aspect-square h-full w-full object-cover"
-                        />
-                    </div>
-
-                    <div className="flex flex-1 flex-col justify-between">
-                        <div className="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
-                            <a href="#">
-                                <h3 className="font-bold uppercase text-gray-900">
-                                    {recommendation.title}
-                                </h3>
-                            </a>
-
-                            <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
-                                {recommendation.reason}
-                            </p>
+                                className="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+                            >
+                                <span>Date:</span>
+                                <span className="w-px flex-1 bg-gray-900/10"></span>
+                                <span>{recommendation.dateAndTime}</span>
+                            </time>
                         </div>
-                        <div className="card-actions justify-start">
-                            <div className="btn btn-ghost btn-circle mr-1 md:mr-3 border-2 rounded-full w-[50px] h-[30px] md:w-[60px] md:h-[60px] flex items-center justify-center  avatar tooltip " data-tip={recommendation.RecommenderName || 'No Name'}>
-                                <img src={recommendation.RecommenderPhotoURL} className="rounded-full" alt="" />
 
-                            </div>
+                        <div className="hidden sm:block sm:basis-56">
+                            <img
+                                alt=""
+                                src={recommendation.Image}
+                                className="aspect-square h-full w-full object-cover"
+                            />
+                        </div>
+
+                        <div className="flex flex-1 flex-col justify-between">
                             <div className="flex  flex-col">
                                 <p className=" font-sans">Created By: {recommendation.RecommenderName}</p>
                                 <p className=" font-serif">Email: {recommendation.RecommenderEmail}</p>
 
                             </div>
+
+                            <div className="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+                                <a href="#">
+                                    <h3 className="font-bold uppercase text-gray-900">
+                                        {recommendation.title}
+                                    </h3>
+                                </a>
+
+                                <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+                                    {recommendation.reason}
+                                </p>
+                            </div>
+                            <div className="card-actions justify-start">
+                                <div className="btn btn-ghost btn-circle mr-1 md:mr-3 border-2 rounded-full w-[50px] h-[30px] md:w-[60px] md:h-[60px] flex items-center justify-center  avatar tooltip " data-tip={recommendation.RecommenderName || 'No Name'}>
+                                    <img src={recommendation.RecommenderPhotoURL} className="rounded-full" alt="" />
+
+                                </div>
+
+                            </div>
+
+
                         </div>
-
-
-                    </div>
-                </article>
+                    </article>
+                    )
                 )
+
             }
 
 

@@ -23,7 +23,7 @@ const Banner = () => {
                     <p className="text-3xl  md:text-6xl  font-extrabold font-Montserrat text-[#fff]">Check Out The Queries</p>
 
                     {/* <Link to='/' className="btn btn-ghost bg-gradient-to-r from-cyan-500 to-blue-500 text-white mt-6">All Queries</Link> */}
-                    <Link to='/' className="group relative inline-block focus:outline-none focus:ring bg-transparent text-white mt-6" href="#">
+                    <Link to='/queries' className="group relative inline-block focus:outline-none focus:ring bg-transparent text-white mt-6" href="#">
                         <span
                             className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-gradient-to-r from-cyan-500 to-blue-500 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"
                         ></span>

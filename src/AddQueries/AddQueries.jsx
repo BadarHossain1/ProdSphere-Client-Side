@@ -48,7 +48,7 @@ const AddQueries = () => {
         //     },
         //     body: JSON.stringify(queryInfo)
         // }
-        axios.post('https://product-sphere-server.vercel.app/AddQuery', queryInfo)
+        axios.post('https://product-sphere-server.vercel.app/AddQuery', queryInfo, { withCredentials: true })
 
             .then(response => {
                 console.log(response)

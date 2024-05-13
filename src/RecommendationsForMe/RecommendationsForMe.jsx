@@ -6,6 +6,8 @@ import axios from "axios";
 const RecommendationsForMe = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         // fetch(`https://product-sphere-server.vercel.app/recommendationsForMe/${user?.email}`)
         axios.get(`https://product-sphere-server.vercel.app/recommendationsForMe/${user?.email}`, { withCredentials: true })
@@ -13,6 +15,7 @@ const RecommendationsForMe = () => {
             .then(data => {
 
                 setList(data);
+                setLoading(false);
             });
     }, [user]);
 
@@ -41,7 +44,7 @@ const RecommendationsForMe = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {lists.map(list => (
+                                {loading ? (<div className="w-full h-full flex justify-center items-center"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div> ):( lists.map(list => (
                                     <tr key={list._id}>
                                         <td>
                                             <img src={list.Image} alt={list.title} className="w-16 h-16 object-cover rounded-full" />
@@ -58,7 +61,8 @@ const RecommendationsForMe = () => {
 
 
                                     </tr>
-                                ))}
+                                )))}
+
                             </tbody>
 
                         </table>

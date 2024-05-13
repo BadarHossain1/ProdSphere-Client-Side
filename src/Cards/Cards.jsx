@@ -6,6 +6,7 @@ import axios from "axios";
 const Cards = () => {
 
     const [queries, setQueries] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     // const reverseData = () => {
     //     setQueries(prevData => [...prevData].reverse());
@@ -16,7 +17,7 @@ const Cards = () => {
         axios.get('https://product-sphere-server.vercel.app/AddQuery')
             .then(res => res.data)
             .then(data => {
-
+                setLoading(false);
                 setQueries(data)
                 setQueries(prevData => [...prevData].reverse());
             })
@@ -37,11 +38,14 @@ const Cards = () => {
 
             {/* here is card */}
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 max-w-[1170px] mx-auto">
+            {
+                loading ?  <div className="w-full h-full flex justify-center items-center"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div> : <div className="grid grid-cols-1 lg:grid-cols-3 max-w-[1170px] mx-auto">
                 {
                     queries.slice(0, 6).map(query => <Card key={query._id} query={query}></Card>)
                 }
             </div>
+
+            }
 
 
         </div>

@@ -2,10 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
+import { set } from "firebase/database";
 
 const MyRecommendations = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         // fetch(`https://product-sphere-server.vercel.app/myRecommendations/${user?.email}`)
         axios.get(`https://product-sphere-server.vercel.app/myRecommendations/${user?.email}`, { withCredentials: true })
@@ -14,6 +17,7 @@ const MyRecommendations = () => {
             .then(data => {
 
                 setList(data);
+                setLoading(false);
             });
     }, [user]);
 
@@ -32,7 +36,7 @@ const MyRecommendations = () => {
                 // fetch(`https://product-sphere-server.vercel.app/myRecommendations/${id}`, {
                 //     method: 'DELETE',
                 // })
-                axios.delete(`https://product-sphere-server.vercel.app/myRecommendations/${id}`, {withCredentials: true})
+                axios.delete(`https://product-sphere-server.vercel.app/myRecommendations/${id}`, { withCredentials: true })
                     .then(res => {
                         console.log(res);
 

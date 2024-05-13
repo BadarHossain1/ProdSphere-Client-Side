@@ -119,7 +119,7 @@ const Navbar = () => {
 
 
                 {
-                    loading ? <div className=" flex justify-end items-end mr-6"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div> : <div className="navbar-end">
+                    loading ? <div className="w-1/2 flex justify-end items-end mr-6"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div> : <div className="navbar-end">
 
                         {
 
@@ -170,7 +170,7 @@ const Navbar = () => {
                                         </label>
 
                                         <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-blue-600 tooltip" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName || 'No Name'}>
-                                            <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] " />
+                                            <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] hidden md:flex md:h-[35px] " />
                                         </div>
                                         <Link to='/login' className=" btn hover:bg-gray-100 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">Login</Link>
 
@@ -184,15 +184,7 @@ const Navbar = () => {
                 }
 
 
-                {/* <div className="navbar-end">
-                    <div className="navbar-center  hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">
-
-                        </ul>
-                    </div>
-                    <Link to='/register' className="btn  bg-gradient-to-r from-cyan-500 to-blue-500 text-white mr-2">Register</Link>
-                    <Link to='/login' className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white">Login</Link>
-                </div> */}
+               
             </div>
         </div>
     );
