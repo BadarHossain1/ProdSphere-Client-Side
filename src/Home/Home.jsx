@@ -5,6 +5,11 @@ import Stats from "../Stats/Stats";
 import Testimonials from "../Testimonials/Testimonials";
 import Cards from "../Cards/Cards";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
 
 
 const Home = () => {
@@ -17,13 +22,13 @@ const Home = () => {
             <div className="mt-[50px]">
             <Banner></Banner>
             </div>
-            <div className="mt-[50px]">
+            <div data-aos="fade-up" data-aos-duration="2000" className="mt-[50px]">
                 <Cards></Cards>
             </div>
-            <div className="mt-[50px]">
+            <div data-aos="fade-right" data-aos-duration="3000" className="mt-[50px]">
                 <Stats></Stats>
             </div>
-            <div className="">
+            <div data-aos="fade-left" data-aos-duration="3000" className="">
                 <Testimonials></Testimonials>
             </div>
 

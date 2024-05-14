@@ -5,7 +5,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
-
+import Marquee from "react-fast-marquee";
 
 const Register = () => {
 
@@ -132,7 +132,7 @@ const Register = () => {
 
 
     return (
-        <div className="flex w-full max-w-sm mx-auto overflow-hidden t rounded-lg shadow-lg lg:max-w-4xl mb-10">
+        <div data-aos="zoom-in-up" data-aos-duration="2000" className="flex w-full max-w-sm mx-auto overflow-hidden t rounded-lg shadow-lg lg:max-w-4xl mb-10">
             <div className="hidden bg-cover lg:block lg:w-1/2 mr-5" style={{ backgroundImage: "url('https://i.ibb.co/QcPdnWB/register.jpg')" }}>
 
             </div>
@@ -142,9 +142,11 @@ const Register = () => {
                     <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1" />
                 </div>
 
-                <p className="mt-3 text-xl text-center font-bold font-Montserrat">
-                    Welcome To Product Sphere
-                </p>
+                <Marquee>
+                    <p className="mt-3 text-xl text-center font-bold font-Montserrat">
+                        Welcome to ProdSphere
+                    </p>
+                </Marquee>
 
                 <button onClick={GoogleSignIn} className="flex w-full btn-ghost items-center justify-center mt-4  transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 ">
                     <div className="px-4 py-2">

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import MyQuery from "./MyQuery";
 import axios from "axios";
+import { Typewriter } from "react-simple-typewriter";
 
 
 const MyQueries = () => {
@@ -17,7 +18,8 @@ const MyQueries = () => {
         // fetch(`https://product-sphere-server.vercel.app/AddQuery/${user?.email}`)
         axios.get(`https://product-sphere-server.vercel.app/AddQuery/${user?.email}`, { withCredentials: true })
             .then(response => response.data)
-            .then(data => {setQueries(data)
+            .then(data => {
+                setQueries(data)
                 setLoading(false);
             })
             .catch(err => console.log(err))
@@ -57,32 +59,46 @@ const MyQueries = () => {
 
             <span className="flex items-center mt-6 mb-6">
                 <span className="h-px flex-1 bg-black"></span>
-                <span className="shrink-0 px-6">            <p className="text-3xl font-extrabold">My <span className="text-[#24A8DB] mt-4 text-center">Queries</span></p>
+                <span className="shrink-0 px-6">            <p className="text-3xl font-extrabold">My <span className="text-[#24A8DB] mt-4 text-center" ><Typewriter
+                    cursor
+                    cursorBlinking
+                    delaySpeed={1000}
+                    deleteSpeed={25}
+                    loop={0}
+                    typeSpeed={75}
+                    cursorColor="blue"
+
+
+                    words={[
+                        'Queries'
+                        
+                    ]}
+                /> </span></p>
                 </span>
                 <span className="h-px flex-1 bg-black"></span>
             </span>
 
             {
-    loading ? (
-        <div className="w-full h-full flex justify-center items-center">
-            <span className="loading loading-spinner loading-xl bg-blue-600"></span>
-        </div>
-    ) : (
-        queries.length > 0 ? (
-            <div className="max-w-[1170px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {queries.map(query => <MyQuery key={query._id} query={query}></MyQuery>)}
-            </div>
-        ) : (
-            <div>
-                <p className="text-center text-[#24A8DB] mt-10">You have no queries. Please add a Query</p>
-                <Link to='/addQueries' className="group relative inline-block focus:outline-none focus:ring bg-transparent text-white mt-6 mb-10" href="#">
-                    <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-gradient-to-r from-cyan-500 to-blue-500 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
-                    <span className="relative inline-block border-2 border-current px-8 py-3 text-sm font-bold uppercase tracking-widest text-white group-active:text-opacity-75">Add Queries</span>
-                </Link>
-            </div>
-        )
-    )
-}
+                loading ? (
+                    <div className="w-full h-full flex justify-center items-center">
+                        <span className="loading loading-spinner loading-xl bg-blue-600"></span>
+                    </div>
+                ) : (
+                    queries.length > 0 ? (
+                        <div className="max-w-[1170px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                            {queries.map(query => <MyQuery key={query._id} query={query}></MyQuery>)}
+                        </div>
+                    ) : (
+                        <div>
+                            <p className="text-center text-[#24A8DB] mt-10">You have no queries. Please add a Query</p>
+                            <Link to='/addQueries' className="group relative inline-block focus:outline-none focus:ring bg-transparent text-white mt-6 mb-10" href="#">
+                                <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-gradient-to-r from-cyan-500 to-blue-500 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
+                                <span className="relative inline-block border-2 border-current px-8 py-3 text-sm font-bold uppercase tracking-widest text-white group-active:text-opacity-75">Add Queries</span>
+                            </Link>
+                        </div>
+                    )
+                )
+            }
 
 
 

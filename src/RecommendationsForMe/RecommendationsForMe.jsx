@@ -23,7 +23,7 @@ const RecommendationsForMe = () => {
     return (
         <div>
             <div className="mb-6">
-                <p className=" text-4xl lg:text-4xl   font-playfair-display font-extrabold text-center w-full  lg:w-7xl mx-auto pt-10">My <span className="text-[#24A8DB] "> Recommendations</span></p>
+                <p className=" text-4xl lg:text-4xl   font-playfair-display font-extrabold text-center w-full  lg:w-7xl mx-auto pt-10"> <span className="text-[#24A8DB] "> Recommendations</span> For Me</p>
 
                 <hr className="border-1 mt-4 mb-16" />
                 <div className=" ">
@@ -44,7 +44,7 @@ const RecommendationsForMe = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {loading ? (<div className="w-full h-full flex justify-center items-center"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div> ):( lists.map(list => (
+                                {loading ? (<div className="w-full h-full flex justify-center items-center"><span className="loading loading-spinner loading-xl bg-blue-600"></span></div> ):( lists.length>0?  lists.map(list => (
                                     <tr key={list._id}>
                                         <td>
                                             <img src={list.Image} alt={list.title} className="w-16 h-16 object-cover rounded-full" />
@@ -61,7 +61,7 @@ const RecommendationsForMe = () => {
 
 
                                     </tr>
-                                )))}
+                                )) : <tr><td colSpan="4" className="text-center">No Recommendations found</td></tr>)}
 
                             </tbody>
 

@@ -10,6 +10,8 @@ import axios from "axios";
 const UpdateQuery = () => {
     const { user } = useContext(AuthContext);
     const [currentDateTime, setCurrentDateTime] = useState("");
+    const [current, setCurrent] = useState({});
+    
 
     const { id } = useParams();
 
@@ -24,6 +26,16 @@ const UpdateQuery = () => {
         // Clean up the interval when the component unmounts
         return () => clearInterval(intervalId);
     }, []);
+
+
+    useEffect(() => { 
+        axios.get(`https://product-sphere-server.vercel.app/AddQuery/id/${id}`, { withCredentials: true })
+            .then(response => {
+                console.log(response.data);
+                setCurrent(response.data);
+            })
+    }, [id])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const ProductName = e.target.ProductName.value;
@@ -80,27 +92,27 @@ const UpdateQuery = () => {
                         <div className="flex justify-between mb-3 mt-4">
                             <div className="flex flex-col w-full">
                                 <label className="">Product Name</label>
-                                <input type="text" placeholder="Product Name" name="ProductName" className="input input-bordered input-accent w-full max-w-xs" />
+                                <input defaultValue={current.ProductName} type="text" placeholder="Product Name" name="ProductName" className="input input-bordered input-accent w-full max-w-xs" />
                             </div>
                             <div className="flex flex-col w-full">
                                 <label className="">Product Brand</label>
-                                <input type="text" placeholder="Product Brand" name="ProductBrand" className="input input-bordered input-accent w-full max-w-xs" />
+                                <input type="text" defaultValue={current.ProductBrand} placeholder="Product Brand" name="ProductBrand" className="input input-bordered input-accent w-full max-w-xs" />
                             </div>
                         </div>
                         <div className="flex justify-between mb-3 mt-4">
                             <div className="flex flex-col w-full">
                                 <label className="">Product Image URL</label>
-                                <input type="text" placeholder="Product Image URL" name="ProductImageURL" className="input input-bordered input-accent w-full max-w-xs" />
+                                <input type="text" defaultValue={current.ProductImageURL} placeholder="Product Image URL" name="ProductImageURL" className="input input-bordered input-accent w-full max-w-xs" />
                             </div>
                             <div className="flex flex-col w-full">
                                 <label className="">Query Title</label>
-                                <input type="text" placeholder="Query Title" name="QueryTitle" className="input input-bordered input-accent w-full max-w-xs" />
+                                <input type="text" defaultValue={current.QueryTitle} placeholder="Query Title" name="QueryTitle" className="input input-bordered input-accent w-full max-w-xs" />
                             </div>
                         </div>
                         <div className="flex justify-between mb-3 mt-4 w-full">
                             <div className="flex flex-col w-[88%]">
                                 <label className="">Boycotting Reason Details</label>
-                                <input type="text" placeholder="Boycotting Reason Details" name="BoycottingReasonDetails" className="input input-bordered input-accent w-full" />
+                                <input type="text" defaultValue={current.BoycottingReasonDetails} placeholder="Boycotting Reason Details" name="BoycottingReasonDetails" className="input input-bordered input-accent w-full" />
                             </div>
                         </div>
                     </div>

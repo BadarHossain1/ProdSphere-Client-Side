@@ -1,4 +1,4 @@
-
+import { Typewriter } from "react-simple-typewriter";
 
 const Testimonials = () => {
 
@@ -8,7 +8,21 @@ const Testimonials = () => {
                 <div className="container px-6 py-12 mx-auto">
                     <div className="grid items-center gap-4 xl:grid-cols-5">
                         <div className="max-w-2xl mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
-                            <h2 className="text-4xl font-bold">Alternative Product Information System <span className="text-[#24A8DB]">Testimonials</span></h2>
+                            <h2 className="text-4xl font-bold">Alternative Product Information System <span className="text-[#24A8DB]"><Typewriter
+                                cursor
+                                cursorBlinking
+                                delaySpeed={1000}
+                                deleteSpeed={25}
+                                loop={0}
+                                typeSpeed={75}
+                                cursorColor="blue"
+
+
+                                words={[
+                                    'Testimonials',
+
+                                ]}
+                            /> </span></h2>
                             <p className="dark:text-gray-600">Discover what people are saying about our alternative product information system. Read testimonials from satisfied users who have experienced the benefits firsthand</p>
                         </div>
                         <div className="p-6 xl:col-span-3">

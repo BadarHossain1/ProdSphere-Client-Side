@@ -3,11 +3,12 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 import { set } from "firebase/database";
+import { Typewriter } from "react-simple-typewriter";
 
 const MyRecommendations = () => {
     const { user } = useContext(AuthContext)
     const [lists, setList] = useState([]);
-    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         // fetch(`https://product-sphere-server.vercel.app/myRecommendations/${user?.email}`)
@@ -17,7 +18,7 @@ const MyRecommendations = () => {
             .then(data => {
 
                 setList(data);
-                setLoading(false);
+
             });
     }, [user]);
 
@@ -63,7 +64,21 @@ const MyRecommendations = () => {
     return (
         <div>
             <div className="mb-6">
-                <p className=" text-4xl lg:text-4xl   font-playfair-display font-extrabold text-center w-full  lg:w-7xl mx-auto pt-10">My <span className="text-[#24A8DB] "> Recommendations</span></p>
+                <p className=" text-4xl lg:text-4xl   font-playfair-display font-extrabold text-center w-full  lg:w-7xl mx-auto pt-10">My <span className="text-[#24A8DB] "> <Typewriter
+                    cursor
+                    cursorBlinking
+                    delaySpeed={1000}
+                    deleteSpeed={25}
+                    loop={0}
+                    typeSpeed={75}
+                    cursorColor="blue"
+
+
+                    words={[
+                        'Recommendations',
+
+                    ]}
+                /> </span></p>
 
                 <hr className="border-1 mt-4 mb-16" />
                 <div className=" ">

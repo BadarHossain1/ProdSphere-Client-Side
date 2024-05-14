@@ -44,7 +44,7 @@ const Queries = () => {
 
     }
     return (
-        <div className="font-Montserrat text-center">
+        <div data-aos="fade-up" data-aos-duration="2000" className="font-Montserrat text-center">
 
 
             {/* here is my queries */}

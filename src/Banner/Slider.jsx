@@ -1,3 +1,4 @@
+
 import { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -40,7 +41,22 @@ const Slider = () => {
 
                     <div className="">
 
-                        <p className="text-3xl  md:text-7xl  font-extrabold font-Montserrat text-[#fff]">Alternative Product  Solutions</p>
+                        <p className="text-3xl  md:text-7xl  font-extrabold font-Montserrat text-[#fff]">Alternative Product <br /> <Typewriter
+                            cursor
+                            cursorBlinking
+                            delaySpeed={1000}
+                            deleteSpeed={25}
+                            loop={0}
+                            typeSpeed={75}
+                            cursorColor="blue"
+
+
+                            words={[
+                                'Solutions',
+                                'Options',
+
+                            ]}
+                        /> </p>
                         <p className="text-sm  md:text-sm  font-semibold font-Montserrat text-[#fff] w-1/2 mx-auto mt-5">Welcome to our platform, where you can explore a world of alternative products. From ethically sourced fashion to renewable energy solutions, we provide a diverse array of alternatives to traditional goods. Join us in discovering sustainable choices for a brighter future.</p>
 
                     </div>
@@ -53,7 +69,8 @@ const Slider = () => {
                 <div className="z-0 flex w-[90%] text-center gap-4 p-2 rounded-lg" >
 
                     <div className="">
-                        {/* <p className="text-4xl  md:text-7xl  font-extrabold font-playfair-display text-[#fff]" > Explore <Typewriter
+
+                        <p className="text-3xl  md:text-7xl  font-extrabold font-Montserrat text-[#fff]">Alternative Product <br /> <Typewriter
                             cursor
                             cursorBlinking
                             delaySpeed={1000}
@@ -64,15 +81,11 @@ const Slider = () => {
 
 
                             words={[
-                                'Bangladesh',
-                                'Thailand',
-                                'Indonesia',
-                                'Malaysia',
-                                'Vietnam',
-                                'Cambodia'
+                                'Solutions',
+                                'Options',
+
                             ]}
-                        /> <br />With Us </p> */}
-                        <p className="text-3xl  md:text-7xl  font-extrabold font-Montserrat text-[#fff]">Alternative Product Solutions</p>
+                        /> </p>
                         <p className="text-sm  md:text-sm  font-semibold font-Montserrat text-[#fff] w-1/2 mx-auto mt-5">Welcome to our platform, where you can explore a world of alternative products. From ethically sourced fashion to renewable energy solutions, we provide a diverse array of alternatives to traditional goods. Join us in discovering sustainable choices for a brighter future.</p>
 
                     </div>
@@ -86,7 +99,22 @@ const Slider = () => {
 
                     <div className="">
 
-                        <p className="text-3xl  md:text-7xl  font-extrabold font-Montserrat text-[#fff]">Alternative Product Solutions</p>
+                        <p className="text-3xl  md:text-7xl  font-extrabold font-Montserrat text-[#fff]">Alternative Product <br /> <Typewriter
+                            cursor
+                            cursorBlinking
+                            delaySpeed={1000}
+                            deleteSpeed={25}
+                            loop={0}
+                            typeSpeed={75}
+                            cursorColor="blue"
+
+
+                            words={[
+                                'Solutions',
+                                'Options',
+
+                            ]}
+                        /> </p>
                         <p className="text-sm  md:text-sm  font-semibold font-Montserrat text-[#fff] w-1/2 mx-auto mt-5">Welcome to our platform, where you can explore a world of alternative products. From ethically sourced fashion to renewable energy solutions, we provide a diverse array of alternatives to traditional goods. Join us in discovering sustainable choices for a brighter future.</p>
 
                     </div>

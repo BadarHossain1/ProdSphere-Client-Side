@@ -7,7 +7,7 @@ const Card = ({ query }) => {
 
     return (
         <div>
-            <div className="max-w-[370px] overflow-hidden rounded-lg shadow-md  mb-4 font-Montserrat flex flex-col">
+            <div className="max-w-[375px] mx-auto overflow-hidden rounded-lg shadow-md  mb-4 font-Montserrat flex flex-col">
                 <div className="flex-grow">
                     <img className="object-cover w-full h-64" src={ProductImageURL} alt="Article"></img>
 

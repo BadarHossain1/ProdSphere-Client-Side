@@ -7,6 +7,7 @@ import { Bounce } from 'react-toastify';
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
+import Marquee from "react-fast-marquee";
 
 
 const Login = () => {
@@ -131,7 +132,7 @@ const Login = () => {
             })
     }
     return (
-        <div className="flex w-full max-w-sm mx-auto overflow-hidden t rounded-lg shadow-lg lg:max-w-4xl mt-6 mb-10">
+        <div data-aos="zoom-in-up" data-aos-duration="2000" className="flex w-full max-w-sm mx-auto overflow-hidden t rounded-lg shadow-lg lg:max-w-4xl mt-6 mb-10">
 
 
             <div className="w-full px-6 py-8 md:px-8 lg:w-1/2  mx-auto">
@@ -139,9 +140,11 @@ const Login = () => {
                     <AiOutlineProduct className="text-[#24A8DB] text-4xl mr-1" />
                 </div>
 
-                <p className="mt-3 text-xl text-center font-bold font-Montserrat">
-                    Welcome Back
-                </p>
+                <Marquee>
+                    <p className="mt-3 text-xl text-center font-bold font-Montserrat">
+                        Welcome Back
+                    </p>
+                </Marquee>
 
                 <button onClick={GoogleSignIn} className="flex  w-full items-center justify-center mt-4  transition-colors duration-300 transform border rounded-lg dark:border-gray-700  hover:bg-gray-50 ">
                     <div className="px-4 py-2">
