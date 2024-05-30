@@ -14,6 +14,7 @@
 - A footer with website title, description, route links and social media handles.
 - Login and Register page for User authentication and displayName and photo is shown in the Navbar.
 - User can use Google account and Github account to sign in as well.
+- Component name for Contact feature: ContactUs.js 
 
 
 
