@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
-import { set } from "firebase/database";
+
 import { Typewriter } from "react-simple-typewriter";
 
 const MyRecommendations = () => {

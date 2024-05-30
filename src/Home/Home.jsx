@@ -7,6 +7,7 @@ import Cards from "../Cards/Cards";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import ContactUs from "../ContactUs/ContactUs";
 // ..
 AOS.init();
 
@@ -31,6 +32,11 @@ const Home = () => {
             <div data-aos="fade-left" data-aos-duration="3000" className="">
                 <Testimonials></Testimonials>
             </div>
+            
+            <div data-aos="fade-up" data-aos-duration="1000" className="mt-10 mb-10">
+                <ContactUs></ContactUs>
+            </div>
+            
 
         </div>
     );
